@@ -14,10 +14,10 @@ export const ConflictingCard2 = ({
 }: ConflictingCard2Props) => {
   return (
     <Card className="card">
-      <div className="card-content">
-        <h3 className="card-title">{title}</h3>
+      <div className="content">
+        <h3 className="title">{title}</h3>
         {children}
-        {highlight && <div className="card-highlight">{highlight}</div>}
+        {highlight && <div className="highlight">{highlight}</div>}
       </div>
     </Card>
   );

@@ -14,10 +14,17 @@ import {
 import { FeatureCard } from "./components/FeatureCard/FeatureCard";
 import { PlainFeatureCard } from "./components/PlainFeatureCard/PlainFeatureCard";
 import { ConflictingCard } from "./components/ConflictingCard/ConflictingCard";
+import { ThemeSwitcher } from "./components/ThemeSwitcher/ThemeSwitcher";
 import styles from "./App.module.css";
 import { ConflictingCard2 } from "./components/ConflictingCard2/ConflictingCard2";
+import { DynamicCard } from "./components/DynamicCard/DynamicCard";
 
-function App() {
+interface AppProps {
+  onThemeChange: (theme: string) => void;
+  currentTheme: string;
+}
+
+function App({ onThemeChange, currentTheme }: AppProps) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
@@ -29,6 +36,10 @@ function App() {
 
   return (
     <div className={styles.root}>
+      <ThemeSwitcher
+        onThemeChange={onThemeChange}
+        currentTheme={currentTheme}
+      />
       <Space direction="vertical" size="large" style={{ width: "100%" }}>
         <Typography.Title>CSS Modules vs Plain CSS Demo</Typography.Title>
 
@@ -96,32 +107,31 @@ function App() {
               When using plain CSS, class names are global. This means that if
               two components use the same class name, they will affect each
               other's styles. Notice how the styles from ConflictingCard affect
-              the PlainFeatureCard below.
+              the ConflictingCard2 below.
             </Typography.Paragraph>
 
             <Space direction="vertical" style={{ width: "100%" }}>
               <ConflictingCard
-                title="Conflicting Card (Affected by Plain CSS Card)"
-                highlight="This card uses plain CSS with conflicting class names. This should not have a hover effect."
+                title="Error Style Card"
+                highlight="This card uses error colors (red)"
               >
                 <p>
                   This card uses simple class names like 'card', 'title', etc.
                   without any namespace.
                 </p>
+                <p>It's styled with error colors (red theme).</p>
               </ConflictingCard>
 
               <ConflictingCard2
-                title="Plain CSS Card (Affected by ConflictingCard)"
-                highlight="This card's styles are being overridden by ConflictingCard"
+                title="Success Style Card (Affected by Error Card)"
+                highlight="This card should be green but is affected by the error card's styles"
               >
                 <p>
-                  Notice how this card's styles are being affected by the
-                  ConflictingCard's styles, even though they're different
-                  components!
+                  This card uses the same class names as the error card above.
                 </p>
                 <p>
-                  This is why we need to use BEM naming or CSS Modules to avoid
-                  conflicts.
+                  Even though it's meant to use success colors (green), the
+                  error card's styles are overriding it!
                 </p>
               </ConflictingCard2>
 
@@ -131,7 +141,7 @@ function App() {
               >
                 <p>
                   This card uses CSS Modules, so its styles are scoped and
-                  unaffected by the ConflictingCard's styles.
+                  unaffected by the conflicting cards.
                 </p>
                 <p>
                   CSS Modules automatically generate unique class names to
@@ -139,6 +149,35 @@ function App() {
                 </p>
               </FeatureCard>
             </Space>
+          </Space>
+        </Card>
+
+        <Card title="Dynamic Styling with CSS Modules">
+          <Space direction="vertical" size="large" style={{ width: "100%" }}>
+            <Typography.Title level={4}>
+              Using classnames with CSS Modules
+            </Typography.Title>
+            <Typography.Paragraph>
+              CSS Modules can be combined with the classnames utility to create
+              dynamic styles based on component state. Try interacting with the
+              card below to see different states:
+            </Typography.Paragraph>
+            <ul>
+              <li>Hover over the card to see the hover effect</li>
+              <li>Click the card to toggle the selected state</li>
+              <li>Click the button to toggle the highlighted state</li>
+            </ul>
+
+            <DynamicCard title="Interactive Card Example">
+              <p>
+                This card demonstrates how to use classnames with CSS Modules to
+                create dynamic styles.
+              </p>
+              <p>
+                The styles are scoped to this component and won't affect other
+                components.
+              </p>
+            </DynamicCard>
           </Space>
         </Card>
 

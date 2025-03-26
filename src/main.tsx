@@ -1,24 +1,32 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 
 import { ConfigProvider } from "antd";
 import { ThemeProvider } from "./ThemeProvider.tsx";
-import { mainTheme } from "./themes.ts";
+import { themes } from "./themes.ts";
 import { App as AntdApp } from "antd";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ConfigProvider theme={mainTheme}>
+const Root = () => {
+  const [currentTheme, setCurrentTheme] = useState("default");
+
+  return (
+    <ConfigProvider theme={themes[currentTheme]}>
       <ThemeProvider>
         <AntdApp
           message={{ maxCount: 1 }}
           notification={{ maxCount: 4, stack: true }}
         >
-          <App />
+          <App onThemeChange={setCurrentTheme} currentTheme={currentTheme} />
         </AntdApp>
       </ThemeProvider>
     </ConfigProvider>
+  );
+};
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <Root />
   </StrictMode>
 );

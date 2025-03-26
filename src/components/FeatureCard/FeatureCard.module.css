@@ -1,7 +1,9 @@
 .card {
   transition: all 0.3s ease;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
 }
 
 .card:hover {
@@ -10,18 +12,24 @@
 }
 
 .title {
-  color: #1890ff;
-  font-size: 18px;
-  margin-bottom: 16px;
+  color: var(--color-primary);
+  font-size: var(--font-size-heading4);
+  margin-bottom: var(--margin);
+  line-height: 1.4;
 }
 
 .content {
-  padding: 16px;
+  padding: var(--padding);
+  font-size: var(--font-size);
+  line-height: 1.6;
 }
 
 .highlight {
-  background-color: #e6f7ff;
-  border-radius: 4px;
-  padding: 8px;
-  margin-top: 8px;
+  background-color: var(--color-primary-bg);
+  border-radius: var(--border-radius-sm);
+  padding: var(--padding-sm);
+  margin-top: var(--margin-sm);
+  border: 1px solid var(--color-primary-border);
+  color: var(--color-primary);
+  font-size: var(--font-size);
 }

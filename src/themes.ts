@@ -1,9 +1,79 @@
-import { ThemeConfig } from "antd";
+import { ThemeConfig, theme } from "antd";
 
-export const mainTheme: ThemeConfig = {
-  token: {
-    marginLG: 48,
+export const themes: Record<string, ThemeConfig> = {
+  default: {
+    token: {
+      colorPrimary: "#1890ff",
+      borderRadius: 6,
+      margin: 16,
+      padding: 16,
+      colorBgContainer: "#ffffff",
+      colorText: "#000000",
+      colorBorder: "#d9d9d9",
+      colorBgElevated: "#ffffff",
+      fontSize: 14,
+      fontSizeHeading1: 38,
+      fontSizeHeading2: 30,
+      fontSizeHeading3: 24,
+      fontSizeHeading4: 20,
+      fontSizeHeading5: 16,
+    },
+  },
+  dark: {
+    token: {
+      colorPrimary: "#177ddc",
+      borderRadius: 6,
+      margin: 16,
+      padding: 16,
+      colorBgContainer: "#141414",
+      colorText: "#ffffff",
+      colorBorder: "#434343",
+      colorBgElevated: "#1f1f1f",
+      fontSize: 14,
+      fontSizeHeading1: 38,
+      fontSizeHeading2: 30,
+      fontSizeHeading3: 24,
+      fontSizeHeading4: 20,
+      fontSizeHeading5: 16,
+    },
+    algorithm: theme.darkAlgorithm,
+  },
+  compact: {
+    token: {
+      colorPrimary: "#1890ff",
+      borderRadius: 4,
+      margin: 8,
+      padding: 8,
+      colorBgContainer: "#ffffff",
+      colorText: "#000000",
+      colorBorder: "#d9d9d9",
+      colorBgElevated: "#ffffff",
+      sizeUnit: 4,
+      fontSize: 12,
+      fontSizeHeading1: 32,
+      fontSizeHeading2: 24,
+      fontSizeHeading3: 20,
+      fontSizeHeading4: 16,
+      fontSizeHeading5: 14,
+    },
+  },
+  spacious: {
+    token: {
+      colorPrimary: "#1890ff",
+      borderRadius: 12,
+      margin: 24,
+      padding: 24,
+      colorBgContainer: "#ffffff",
+      colorText: "#000000",
+      colorBorder: "#d9d9d9",
+      colorBgElevated: "#ffffff",
+      sizeUnit: 8,
+      fontSize: 16,
+      fontSizeHeading1: 44,
+      fontSizeHeading2: 36,
+      fontSizeHeading3: 28,
+      fontSizeHeading4: 24,
+      fontSizeHeading5: 18,
+    },
   },
 };
-
-export const darkTheme: ThemeConfig = {};
