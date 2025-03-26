@@ -1,0 +1,5 @@
+In this repository we are using the latest version of the Ant Design package for our design system. When suggesting and implementing code, we should always use the base building blocks that Antd provides by default
+unless we have a wrapper implementation already built or we are explicitly asking to build a wrapper around it.
+
+When adding CSS classes, we are following the BEM (Block, Element, Modifier) naming convention. More information about it can be found at https://getbem.com/
+
